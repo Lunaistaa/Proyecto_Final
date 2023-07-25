@@ -1,0 +1,528 @@
+/* Variables */
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #333;
+  --accent-color: #FFD700;
+  --font-color: white;
+  --border-color: #555;
+  --success-color: #4CAF50;
+  --error-color: #FF0000;
+  --gradient-color-1: #FF4500;
+  --gradient-color-2: #FFA500;
+  --gradient-color-3: #FFD700;
+  --star-color: #FFD700;
+  --moon-color: #D3D3D3;
+  --planet-color: #9400D3;
+  --nebula-color: #FF69B4;
+  --sparkle-color: #FFFF00;
+  --space-dust-color: #808080;
+  --space-background: radial-gradient(ellipse at top, var(--moon-color) 0%, transparent 80%),
+                       linear-gradient(45deg, var(--space-dust-color) 25%, transparent 25%),
+                       linear-gradient(-45deg, var(--space-dust-color) 25%, transparent 25%),
+                       linear-gradient(45deg, transparent 75%, var(--space-dust-color) 75%),
+                       linear-gradient(-45deg, transparent 75%, var(--space-dust-color) 75%),
+                       var(--planet-color);
+}
+
+/* Estilos globales de la aplicación */
+body {
+  margin: 0;
+  font-family: 'Helvetica', sans-serif;
+  text-align: center;
+  background: var(--space-background);
+  color: var(--font-color);
+  animation: background-spin 40s linear infinite, color-change 10s infinite alternate, nebula-twinkle 5s infinite;
+}
+
+@keyframes background-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes nebula-twinkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Estilos del logotipo */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  /* Efecto de rotación */
+  animation: spin 8s linear infinite, logo-pulsate 5s infinite alternate;
+  transform-origin: center;
+  position: relative;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
+}
+
+@keyframes logo-pulsate {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+/* Estilo del logotipo como un símbolo de Batman */
+.App-logo::before {
+  content: "\f1d6";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 80px;
+  color: var(--star-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: glow 2s linear infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--star-color);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--star-color), 0 0 20px var(--star-color), 0 0 30px var(--star-color);
+  }
+}
+
+/* Estilo de la luna como símbolo de Batgirl */
+.App-logo::after {
+  content: "\f5ba";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 40px;
+  color: var(--moon-color);
+  position: absolute;
+  top: 30%;
+  left: 80%;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+
+/* Enlace de la aplicación */
+.App-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 2px;
+  transition: border-bottom 0.2s;
+}
+
+.App-link:hover {
+  border-bottom: 2px solid transparent;
+}
+
+/* Estilos del formulario */
+form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes form-shake {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+table {
+  width: 400px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 5px;
+}
+
+label {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+  animation: glow-border 2s infinite alternate, input-pulsate 5s infinite alternate;
+}
+
+@keyframes glow-border {
+  0% {
+    border-color: var(--border-color);
+  }
+  100% {
+    border-color: var(--star-color);
+  }
+}
+
+@keyframes input-pulsate {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+input::placeholder {
+  color: #999;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--font-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Efecto de sombra y desplazamiento en 3D */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 40px var(--sparkle-color);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: radial-gradient(circle, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+  /* Efecto de destello */
+  box-shadow: 0 0 20px 5px var(--sparkle-color);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Agregar un icono de murciélago a los botones */
+button > svg {
+  margin-right: 5px;
+  fill: var(--font-color);
+}
+
+/* Estilo del botón de registro */
+.register-button {
+  background-color: #FF4500;
+  /* Efecto de pulsación */
+  animation: pulse 2s infinite;
+}
+
+.register-button:hover {
+  background: radial-gradient(circle, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+}
+
+/* Estilo del botón de guardar */
+.save-button {
+  background-color: #FFD700;
+}
+
+.save-button:hover {
+  background: radial-gradient(circle, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+}
+
+/* Estilo del botón de cancelar */
+.cancel-button {
+  background-color: #00BFFF;
+}
+
+.cancel-button:hover {
+  background: radial-gradient(circle, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+}
+
+/* Estilo del botón de eliminar */
+.delete-button {
+  background-color: #8A2BE2;
+}
+
+.delete-button:hover {
+  background: radial-gradient(circle, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3));
+}
+
+/* Estilo del mensaje de éxito */
+.message.success {
+  background-color: var(--success-color);
+  color: var(--font-color);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del mensaje de error */
+.message.error {
+  background-color: var(--error-color);
+  color: var(--font-color);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación de pulsación */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Estilo adicional creativo */
+body {
+  /* Fondo personalizado */
+  background: linear-gradient(90deg, var(--nebula-color), var(--moon-color), var(--planet-color));
+  background-size: 200% 200%;
+  animation: nebula-animation 10s linear infinite;
+}
+
+@keyframes nebula-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Efecto de parpadeo de estrellas */
+body::before {
+  content: "★";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2em;
+  color: var(--star-color);
+  opacity: 0.5;
+  animation: stars-blink 3s infinite alternate;
+}
+
+@keyframes stars-blink {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Efecto de órbita del planeta */
+.planet-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: orbit 20s linear infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+
+/* Efecto de destellos espaciales */
+.space-dust {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--space-dust-color) 1px, transparent 1px) repeat,
+              radial-gradient(circle, var(--space-dust-color) 1px, transparent 1px) repeat;
+  background-size: 5px 5px;
+  animation: space-dust-float 20s linear infinite;
+}
+
+@keyframes space-dust-float {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px);
+  }
+}
+
+/* Estilo de botón espacial */
+.space-button {
+  background-color: var(--planet-color);
+  color: var(--font-color);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.space-button:hover {
+  background-color: var(--moon-color);
+  transform: scale(1.05);
+}
+
+.space-button::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background-color: var(--star-color);
+  top: -25%;
+  left: -25%;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: button-glow 2s linear infinite alternate;
+}
+
+@keyframes button-glow {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Estilo del mensaje de bienvenida */
+.welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 50px;
+  text-shadow: 2px 2px var(--star-color);
+}
+
+/* Estilo del título */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--star-color);
+  text-shadow: 3px 3px 0 var(--planet-color), 4px 4px 0 var(--moon-color);
+  margin-top: 20px;
+}
+
+/* Estilo del subtítulo */
+.subtitle {
+  font-size: 18px;
+  color: var(--accent-color);
+  text-shadow: 1px 1px var(--planet-color);
+}
+
+/* Estilo de la sección */
+.section {
+  margin: 40px;
+}
+
+/* Estilo de los elementos espaciales */
+.space-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  margin: 10px;
+}
+
+.space-item img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+/* Estilo de la sección de formularios */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-section input,
+.form-section select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+}
+
+.form-section button {
+  margin-top: 20px;
+}
+
+/* Estilo del pie de página */
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--accent-color);
+  text-shadow: 1px 1px var(--planet-color);
+}
